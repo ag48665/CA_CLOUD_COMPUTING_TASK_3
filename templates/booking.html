@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Ticket | Cloud Bus Pass</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+<body>
+
+<div class="container">
+    <h1>Book Bus Ticket</h1>
+
+    <p>
+        <strong>Route:</strong>
+        {{ route.origin }} → {{ route.destination }}
+    </p>
+
+    <p>
+        <strong>Departure:</strong>
+        {{ route.departure_time }}
+    </p>
+
+    <p>
+        <strong>Price:</strong>
+        £{{ "%.2f"|format(route.price) }}
+    </p>
+
+    <form method="POST">
+        <label for="passenger_name">Passenger name</label>
+
+        <input
+            id="passenger_name"
+            name="passenger_name"
+            type="text"
+            required
+        >
+
+        <button type="submit">Confirm booking</button>
+    </form>
+
+    <p>
+        <a href="{{ url_for('routes') }}">Cancel</a>
+    </p>
+</div>
+
+</body>
+</html>

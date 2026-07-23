@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bus Ticket</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+<body>
+
+<div class="container ticket">
+    <h1>Bus Ticket</h1>
+
+    <p>
+        <strong>Ticket number:</strong>
+        {{ booking.ticket_number }}
+    </p>
+
+    <p>
+        <strong>Passenger:</strong>
+        {{ booking.passenger_name }}
+    </p>
+
+    <p>
+        <strong>Route:</strong>
+        {{ booking.route.origin }}
+        →
+        {{ booking.route.destination }}
+    </p>
+
+    <p>
+        <strong>Departure:</strong>
+        {{ booking.route.departure_time }}
+    </p>
+
+    <p>
+        <strong>Price:</strong>
+        £{{ "%.2f"|format(booking.total_price) }}
+    </p>
+
+    <p>
+        <strong>Booked:</strong>
+        {{ booking.booking_date.strftime("%d/%m/%Y %H:%M") }}
+    </p>
+
+    <p>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    </p>
+</div>
+
+</body>
+</html>

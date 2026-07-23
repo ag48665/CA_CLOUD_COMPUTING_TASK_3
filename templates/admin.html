@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Admin Panel</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% for category, message in messages %}
+<div class="message {{ category }}">
+{{ message }}
+</div>
+{% endfor %}
+{% endwith %}
+
+<form method="POST">
+
+<label>Origin</label>
+<input type="text" name="origin" required>
+
+<label>Destination</label>
+<input type="text" name="destination" required>
+
+<label>Departure</label>
+<input type="text" name="departure" required>
+
+<label>Price</label>
+<input type="number"
+       step="0.01"
+       name="price"
+       required>
+
+<label>Seats</label>
+<input type="number"
+       name="seats"
+       required>
+
+<button type="submit">
+Add Route
+</button>
+
+</form>
+
+<hr>
+
+<h2>Current Routes</h2>
+
+{% for route in routes %}
+
+<p>
+
+<b>{{ route.origin }}</b>
+
+→
+
+<b>{{ route.destination }}</b>
+
+|
+
+{{ route.departure_time }}
+
+|
+
+£{{ "%.2f"|format(route.price) }}
+
+|
+
+Seats:
+
+{{ route.available_seats }}
+
+</p>
+
+{% endfor %}
+
+<br>
+
+<a href="{{ url_for('dashboard') }}">
+Back to Dashboard
+</a>
+
+</div>
+
+</body>
+</html>
