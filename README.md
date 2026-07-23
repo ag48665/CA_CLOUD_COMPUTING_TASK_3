@@ -95,12 +95,6 @@ python app.py
 
 ---
 
-## User Dashboard
-
-![Dashboard](screenshots/Figure_4.png)
-
----
-
 ## Available Bus Routes
 
 ![Routes](screenshots/Figure_5.png)
